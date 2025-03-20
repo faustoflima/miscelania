@@ -1,0 +1,29 @@
+import requests
+
+from bs4 import BeautifulSoup
+
+# link = 'https://app.gtowizard.com/solutions?custree_id=146a8ffa-39d9-4c40-80a4-6db3d8df6b6f&solution_type=gwiz&gmfs_solution_tab=ai_sols&gametype=Cash6m500zGeneral&depth=100&gmff_stacks_type=SYMMETRIC&gmff_depth=100&gmff_type=general&gmff_rake=NL500&gmff_opening_size=gto&gmfft_sort_key=0&gmfft_sort_order=desc&preflop_actions=F-F-F-F&history_spot=0'
+
+link = 'https://app.gtowizard.com/solutions?custree_id=146a8ffa-39d9-4c40-80a4-6db3d8df6b6f&solution_type=gwiz&gmfs_solution_tab=ai_sols&gametype=Cash6m500zGeneral&depth=100&gmff_stacks_type=SYMMETRIC&gmff_depth=100&gmff_type=general&gmff_rake=NL500&gmff_opening_size=gto&gmfft_sort_key=0&gmfft_sort_order=desc&preflop_actions=F-F-F-F&history_spot=0'
+
+headers = {"User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'}
+
+requisicao = requests.get(link, headers= headers)
+
+# print(requisicao)
+# print(requisicao.text)
+
+site = BeautifulSoup(requisicao.text, "html.parser")
+site = BeautifulSoup(requisicao.text, "lxml")
+
+
+# print(site.prettify())
+
+print(site.div) #vem nulo?
+
+site.find("div")
+
+aaa = site.find("div")
+
+print(aaa)
+
